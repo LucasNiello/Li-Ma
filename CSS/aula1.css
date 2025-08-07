@@ -1,0 +1,20 @@
+/*Formatação de Parágrafo*/
+
+p{
+    color: blue;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+}
+
+h1, h2 {
+    color: red;
+}
+
+h3{
+    color: green;
+    font-style: italic;
+}
+
+/* ETECETERA */
