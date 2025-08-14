@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paróquia Santo Antonio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <h1>⛪ Paróquia Santo Antonio</h1>
+    <nav id="menu">
+        <a href="#inicio">Início</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#horarios">Horários</a>
+        <a href="#eventos">Eventos</a>
+        <a href="#matriculas">Matrículas</a>
+        <a href="#mensagens">Mensagens</a>
+        <a href="#contato">Contato</a>
+    </nav>
+    <button id="btnMenu">☰</button>
+</header>
+
+<main>
+    <!-- Início -->
+    <section id="inicio" class="secao">
+        <h2>Bem-vindo!</h2>
+        <p>Seja bem-vindo à Paróquia Santo Antonio! Aqui você encontra horários de missas, eventos, e pode se inscrever em nossas atividades.</p>
+        <a href="#eventos" class="btn">Ver Eventos</a>
+        <a href="#matriculas" class="btn">Fazer Matrícula</a>
+    </section>
+
+    <!-- Sobre -->
+    <section id="sobre" class="secao">
+        <h2>Sobre Nossa Paróquia</h2>
+        <p>A Paróquia Santo Antonio é uma comunidade católica dedicada ao serviço de Deus e ao cuidado pastoral de nossos fiéis.</p>
+        <p>Inspirados por Santo Antonio de Pádua, buscamos sempre acolher e servir nossa comunidade.</p>
+    </section>
+
+    <!-- Horários -->
+    <section id="horarios" class="secao">
+        <h2>Horários de Missas</h2>
+        <ul>
+            <li>Segunda a Sexta: 18:00</li>
+            <li>Sábado: 18:00</li>
+            <li>Domingo: 07:00, 09:00, 18:00</li>
+        </ul>
+        <h2>Horários de Confissões</h2>
+        <ul>
+            <li>Terça e Quinta: 17:00 - 17:45</li>
+            <li>Sábado: 16:00 - 17:45</li>
+            <li>Domingo: 08:00 - 08:45</li>
+        </ul>
+    </section>
+
+    <!-- Eventos -->
+    <section id="eventos" class="secao">
+        <h2>Próximos Eventos</h2>
+        <p>Em breve mais informações sobre nossos eventos e quermesse!</p>
+    </section>
+
+    <!-- Matrículas -->
+    <section id="matriculas" class="secao">
+        <h2>Matrículas</h2>
+        <form id="formMatricula">
+            <input type="text" placeholder="Nome Completo" required>
+            <input type="email" placeholder="E-mail">
+            <input type="tel" placeholder="Telefone" required>
+            <select required>
+                <option value="">Selecione uma atividade</option>
+                <option>Catequese Infantil</option>
+                <option>Catequese de Adultos</option>
+                <option>Pastoral da Juventude</option>
+                <option>Coral</option>
+            </select>
+            <textarea placeholder="Observações"></textarea>
+            <button type="submit" class="btn">Enviar</button>
+        </form>
+        <p id="msgMatricula"></p>
+    </section>
+
+    <!-- Mensagens -->
+    <section id="mensagens" class="secao">
+        <h2>Mensagens e Sugestões</h2>
+        <form id="formMensagem">
+            <input type="text" placeholder="Nome" required>
+            <input type="email" placeholder="E-mail">
+            <select required>
+                <option value="">Tipo de Mensagem</option>
+                <option>Comentário</option>
+                <option>Sugestão</option>
+                <option>Pedido de Oração</option>
+                <option>Dúvida</option>
+                <option>Elogio</option>
+            </select>
+            <textarea placeholder="Escreva sua mensagem..." required></textarea>
+            <button type="submit" class="btn">Enviar</button>
+        </form>
+        <p id="msgMensagem"></p>
+    </section>
+
+    <!-- Contato -->
+    <section id="contato" class="secao">
+        <h2>Contato</h2>
+        <p>📍 Rua das Flores, 123 - São Paulo/SP</p>
+        <p>📞 (11) 3456-7890</p>
+        <p>📧 contato@paroquiasantoantonio.org.br</p>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2024 Paróquia Santo Antonio</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
