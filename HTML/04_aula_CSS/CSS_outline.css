@@ -1,0 +1,42 @@
+/* Define o style de todos os h1 no html */
+h1 {
+    color: rgb(255, 255, 255);
+    background-color: black;
+    text-align: center;
+    padding: 10px;
+    margin: 20px; /* margem externa */
+}
+
+/* Define o style de todos os h2 no html */
+h2 {
+    color: rgb(0, 0, 0);
+    background-color: yellow;
+    text-align: center;
+    padding: 10px;
+    margin: 20px; /* margem externa */
+}
+
+/* _______________________________________________________________________________________________________________ */
+
+/* Quando passar o mouse em cima do titulo H1 ele muda de cor e tamanho da caixa */
+h1:hover {
+    color: rgb(0, 0, 0);
+    background-color: rgb(230, 113, 113);
+    padding: 15px;
+    margin: 25px; /* margem também pode mudar no hover se quiser */
+}
+
+/* Quando passar o mouse em cima do titulo H2 ele muda de cor e tamanho da caixa */
+h2:hover {
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+    padding: 15px;
+    margin: 25px; /* idem */
+}
+
+/* _______________________________________________________________________________________________________________ */
+body{
+    background-color: rgb(240, 240, 240);
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
