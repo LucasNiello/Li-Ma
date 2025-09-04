@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+body {
+    background-color: green;
+}
+
+h1 {
+    color: rgb(137, 130, 238);
+    text-align: center;
+}
+
+/* importação de fonte Ubuntu */
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap');
+body {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+/* importação de fonte local */
+@font-face {
+    font-family: 'Monsieur La Doulaise';
+    src: url('Fontes_/MonsieurLaDoulaise-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Agora use a fonte */
+h1 {
+    font-family: 'Monsieur La Doulaise', cursive;
+}
+h2 {
+    font-family: 'Monsieur La Doulaise', cursive;
+}
+
+p {
+
+
+
+font-family: Arial, Helvetica, sans-serif;
+font-size:
+1em;
+font-style:
+italic;
+font-weight:
+bold;
+Podemos usar a shorthand font que vai simplificar tudo:
+p {
+font: italic bold lem Arial, Helvetica, sans-serif;
+}
