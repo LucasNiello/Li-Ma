@@ -1,0 +1,322 @@
+/* ==========================================
+   Reset básico
+   Remove margens e paddings padrões de todos os elementos e aplica box-sizing border-box
+   Isso facilita o controle de largura e altura, incluindo bordas e padding
+========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ==========================================
+   Estilo do corpo da página
+   Define fonte, fundo animado em gradiente, cor do texto, altura mínima e espaçamento de linha
+========================================== */
+body {
+    font-family: 'Press Start 2P', cursive; /* Fonte estilo pixel/retro */
+    background: linear-gradient(45deg, #ff006e, #8338ec, #3a86ff, #06ffa5); /* Gradiente colorido diagonal */
+    background-size: 400% 400%; /* Amplia o gradiente para dar efeito de movimento */
+    animation: gradientShift 8s ease infinite; /* Animação contínua do gradiente */
+    color: #ffffff; /* Cor do texto branco */
+    line-height: 1.6; /* Espaçamento entre linhas */
+    min-height: 100vh; /* Garante que o corpo ocupe pelo menos a altura da tela */
+}
+
+/* ==========================================
+   BACKGROUND divertido:
+   Animação do fundo gradiente
+   Faz o gradiente "deslizar" suavemente
+========================================== */
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ==========================================
+   Cabeçalho
+   Centraliza conteúdo, aplica padding, fundo semitransparente, borda e sombra
+========================================== */
+header {
+    text-align: center;
+    padding: 40px 20px;
+    background: rgba(0, 0, 0, 0.8); /* Fundo preto com transparência */
+    margin-bottom: 40px;
+    border-bottom: 4px solid #ffff00; /* Linha amarela na base do header */
+    box-shadow: 0 0 20px rgba(255, 255, 0, 0.5); /* Sombra amarela suave */
+}
+
+/* Título principal */
+header h1 {
+    font-size: 2.5rem;
+    color: #ff006e; /* Cor rosa forte */
+    text-shadow: 3px 3px 0px #ffff00, 6px 6px 0px #8338ec; /* Sombras para efeito 3D/neon */
+    margin-bottom: 20px;
+    animation: neonGlow 2s ease-in-out infinite alternate; /* Animação de brilho neon */
+}
+
+/* Animação neon para o título */
+@keyframes neonGlow {
+    from { text-shadow: 3px 3px 0px #ffff00, 6px 6px 0px #8338ec, 0 0 10px #ff006e; }
+    to { text-shadow: 3px 3px 0px #ffff00, 6px 6px 0px #8338ec, 0 0 20px #ff006e, 0 0 30px #ff006e; }
+}
+
+/* Subtítulo do header */
+header h2 {
+    font-size: 1.2rem;
+    color: #06ffa5; /* Verde neon */
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 0px #000000; /* Sombra preta leve */
+}
+
+/* Parágrafo do header */
+header p {
+    font-size: 0.7rem;
+    color: #ffffff;
+    max-width: 600px; /* Limita largura para melhor leitura */
+    margin: 0 auto; /* Centraliza horizontalmente */
+    text-shadow: 1px 1px 0px #000000; /* Sombra leve */
+}
+
+/* ==========================================
+   Container principal (main)
+   Centraliza conteúdo e define largura máxima
+========================================== */
+main {
+    padding: 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ==========================================
+   Galeria de cards
+   Grid responsivo que se adapta à largura da tela
+========================================== */
+.galeria {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Colunas automáticas com mínimo de 300px */
+    gap: 30px; /* Espaçamento entre cards */
+    margin-bottom: 60px;
+}
+
+/* ==========================================
+   Estilo dos cards
+   Fundo escuro, borda amarela, arredondamento, sombra e transições
+========================================== */
+.card {
+    background: rgba(0, 0, 0, 0.9); /* Preto semi-opaco */
+    border-radius: 15px; /* Cantos arredondados */
+    overflow: hidden; /* Evita que conteúdo vaze */
+    border: 3px solid #ffff00; /* Borda amarela */
+    box-shadow: 0 0 15px rgba(255, 255, 0, 0.3); /* Sombra amarela suave */
+    transition: all 0.3s ease; /* Transição suave para hover */
+    position: relative;
+}
+
+/* Hover nos cards */
+.card:hover {
+    transform: translateY(-10px) scale(1.05); /* Levanta e aumenta o card */
+    border-color: #ff006e; /* Borda rosa no hover */
+    box-shadow: 0 15px 30px rgba(255, 0, 110, 0.5); /* Sombra rosa intensa */
+    animation: cardPulse 0.6s ease; /* Pulso animado */
+}
+
+/* Animação de pulso do card */
+@keyframes cardPulse {
+    0%, 100% { transform: translateY(-10px) scale(1.05); }
+    50% { transform: translateY(-15px) scale(1.08); }
+}
+
+/* Imagem do card */
+.card img {
+    width: 100%;
+    height: 200px; /* Altura fixa */
+    object-fit: cover; /* Preenche mantendo proporção */
+    border-bottom: 3px solid #06ffa5; /* Linha verde neon */
+    transition: all 0.3s ease;
+}
+
+/* Efeito ao passar o mouse na imagem */
+.card:hover img {
+    filter: brightness(1.2) saturate(1.3); /* Aumenta brilho e saturação */
+}
+
+/* Informações do card */
+.card-info {
+    padding: 20px;
+}
+
+/* Título do card */
+.card-info h3 {
+    font-size: 1rem;
+    color: #06ffa5;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 0px #000000;
+}
+
+/* Ano ou tag do card */
+.ano {
+    display: inline-block;
+    background: linear-gradient(45deg, #ff006e, #8338ec);
+    color: #ffffff;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.6rem;
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 0px #000000;
+    border: 2px solid #ffff00;
+}
+
+/* Parágrafo dentro do card */
+.card-info p {
+    font-size: 0.6rem;
+    color: #ffffff;
+    text-shadow: 1px 1px 0px #000000;
+    line-height: 1.4;
+}
+
+/* ==========================================
+   Sessão multimídia (ex: vídeos, áudios)
+========================================== */
+.midia {
+    text-align: center;
+    margin: 40px;
+}
+
+/* ==========================================
+   Rodapé
+   Fundo escuro, centralizado, borda e sombra
+========================================== */
+footer {
+    background: rgba(0, 0, 0, 0.9);
+    text-align: center;
+    padding: 40px 20px;
+    border-top: 4px solid #06ffa5;
+    box-shadow: 0 0 20px rgba(6, 255, 165, 0.3);
+}
+
+/* Parágrafo do footer */
+footer p {
+    font-size: 0.7rem;
+    margin-bottom: 15px;
+    color: #ffffff;
+    text-shadow: 1px 1px 0px #000000;
+}
+
+/* Links do footer */
+.links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+/* Estilo dos links do footer */
+.link-footer {
+    color: #ffff00;
+    text-decoration: none;
+    font-size: 0.6rem;
+    padding: 10px 15px;
+    border: 2px solid #ffff00;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    text-shadow: 1px 1px 0px #000000;
+}
+
+/* Hover nos links do footer */
+.link-footer:hover {
+    background: #ffff00;
+    color: #000000;
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(255, 255, 0, 0.7);
+}
+
+/* ==========================================
+   Responsividade para tablets
+========================================== */
+@media (max-width: 768px) {
+    header h1 { font-size: 2rem; }
+    header h2 { font-size: 1rem; }
+    header p { font-size: 0.6rem; }
+    .galeria { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+    .card-info h3 { font-size: 0.9rem; }
+    .card-info p { font-size: 0.55rem; }
+    .links { flex-direction: column; align-items: center; gap: 15px; }
+}
+
+/* ==========================================
+   Responsividade para celulares
+========================================== */
+@media (max-width: 480px) {
+    header { padding: 30px 15px; }
+    header h1 { font-size: 1.5rem; }
+    header h2 { font-size: 0.9rem; }
+    header p { font-size: 0.5rem; }
+    main { padding: 0 15px; }
+    .galeria { grid-template-columns: 1fr; gap: 15px; }
+    .card-info { padding: 15px; }
+    .card-info h3 { font-size: 0.8rem; }
+    .card-info p { font-size: 0.5rem; }
+    .ano { font-size: 0.5rem; padding: 3px 8px; }
+    footer { padding: 30px 15px; }
+    footer p { font-size: 0.6rem; }
+    .link-footer { font-size: 0.5rem; padding: 8px 12px; }
+}
+
+/* ==========================================
+   Efeitos especiais adicionais nos cards
+   Adiciona borda colorida animada no hover
+========================================== */
+.card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #ff006e, #8338ec, #3a86ff, #06ffa5, #ffff00);
+    border-radius: 15px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.card:hover::before {
+    opacity: 1;
+    animation: borderGlow 1s ease infinite;
+}
+
+/* Animação de brilho da borda do card */
+@keyframes borderGlow {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}
+
+/* ==========================================
+   Scrollbar personalizada
+========================================== */
+::-webkit-scrollbar { width: 12px; }
+
+::-webkit-scrollbar-track { background: #000000; }
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #ff006e, #06ffa5);
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #06ffa5, #ffff00);
+}
+
+/* ==========================================
+   Padronização das imagens dos cards
+   Todas terão mesma largura, altura, borda arredondada e sombra
+========================================== */
+img {
+    width: 200px;
+    height: 150px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
