@@ -1,0 +1,716 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Caderno Bootstrap — Exemplo Completo</title>
+  <!-- Bootstrap CSS (CDN) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons (CDN) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    /* ===== Estilo visual "caderno" ===== */
+    :root { --paper-bg: #f7f5ef; --line-color: rgba(0,0,0,0.04); }
+    body { background: var(--paper-bg); font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+
+    /* área principal com aspecto de folha pautada */
+    .notebook {
+      max-width: 1140px;
+      margin: 2.25rem auto;
+      background: white;
+      border-radius: 12px;
+      padding: 1.75rem;
+      box-shadow: 0 10px 30px rgba(20,20,20,0.06);
+      /* linhas horizontais (pauta) */
+      background-image: repeating-linear-gradient(transparent, transparent 28px, var(--line-color) 29px);
+    }
+
+    /* margem estilo fichário (linha à esquerda) */
+    .binder { border-left: 6px dashed rgba(0,0,0,0.06); padding-left: 1.25rem; }
+
+    /* estilo para blocos de código dentro da página (visível) */
+    .code-sample { background:#0b1220; color:#e6eef6; padding:1rem; border-radius:6px; overflow:auto; font-family: 'Courier New', monospace; font-size:0.86rem; }
+    .copy-btn { position: absolute; right: .75rem; top: .5rem; z-index:2; }
+
+    /* estilo do cabeçalho do caderno */
+    .cover { display:flex; align-items:center; gap:1rem; }
+    .cover .logo { font-size:1.5rem; transform: rotate(-6deg); }
+
+    /* pequenas melhorias responsivas */
+    @media (max-width: 576px) { .notebook { margin: 1rem; padding: 1rem } }
+  </style>
+</head>
+<body>
+
+  <!-- ===== Navbar / Capa do caderno ===== -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">📒 Caderno Bootstrap</a>
+
+      <div class="d-flex align-items-center">
+        <!-- botão demonstração de toast -->
+        <button class="btn btn-outline-light me-2" id="showToastBtn" data-bs-toggle="tooltip" title="Mostra um exemplo de toast"><i class="bi bi-bell"></i></button>
+        <!-- alternar tema (simples: aplica classe dark-mode) -->
+        <button class="btn btn-light" id="themeToggle" data-bs-toggle="tooltip" title="Alternar tema"><i class="bi bi-moon-stars-fill"></i></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== Container principal — visual do caderno ===== -->
+  <main class="notebook binder" role="main">
+    <!-- Cabeçalho / explicação curta -->
+    <header class="mb-4">
+      <div class="d-flex justify-content-between align-items-start">
+        <div>
+          <h1 class="h3 mb-1">Caderno Bootstrap — Guia & Exemplo</h1>
+          <p class="text-muted mb-0">Uma página-exemplo preenchida com componentes e utilitários do Bootstrap. Ao lado de cada demonstração há a explicação e o mesmo markup em um bloco copiável.</p>
+        </div>
+        <div class="text-end">
+          <small class="text-muted">Salvo localmente no seu navegador (localStorage)</small>
+        </div>
+      </div>
+    </header>
+
+    <!-- ===== SEÇÃO: Como usar ===== -->
+    <section class="mb-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Como usar este caderno</h5>
+          <ul>
+            <li>Veja a demonstração — cada bloco mostra o componente e seu código HTML.</li>
+            <li>Clique em <strong>Copiar</strong> para copiar o código do exemplo.</li>
+            <li>Abra a área <strong>"Caderno Interativo"</strong> para ver notas já preenchidas; você pode editar, excluir e criar novas notas — elas são salvas no seu navegador.</li>
+            <li>Procure, filtre e teste as utilidades e componentes à vontade.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SEÇÃO: Galeria de Componentes (exemplo visual + código) ===== -->
+    <section class="mb-4">
+      <h2 class="h5 mb-3">Galeria de Componentes</h2>
+
+      <!-- Row: Botões e Badges -->
+      <div class="row g-3 mb-3">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Botões</h5>
+              <p class="card-text">Classes prontas: <code>btn</code> + variante (ex.: <code>btn-primary</code>, <code>btn-outline-secondary</code>).</p>
+              <!-- Demonstração -->
+              <div class="mb-3">
+                <button class="btn btn-primary me-1">Primário</button>
+                <button class="btn btn-outline-secondary me-1">Outline</button>
+                <button class="btn btn-success me-1">Sucesso</button>
+                <button class="btn btn-danger me-1">Perigo</button>
+              </div>
+
+              <!-- Código copiável -->
+              <div class="position-relative">
+                <button class="btn btn-sm btn-light copy-btn" data-copy-target="#code-buttons"><i class="bi bi-clipboard"></i> Copiar</button>
+                <pre id="code-buttons" class="code-sample"><code>&lt;!-- Botões básicos --&gt;
+&lt;button class="btn btn-primary"&gt;Primário&lt;/button&gt;
+&lt;button class="btn btn-outline-secondary"&gt;Outline&lt;/button&gt;
+&lt;button class="btn btn-success"&gt;Sucesso&lt;/button&gt;
+&lt;button class="btn btn-danger"&gt;Perigo&lt;/button&gt;
+</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Badges & Indicadores</h5>
+              <p class="card-text">Badges para marcar quantidade ou status — use <code>badge</code> + cor (<code>bg-*</code>).</p>
+              <div class="mb-3">
+                <span class="badge bg-primary me-1">Novo</span>
+                <span class="badge bg-success me-1">Online</span>
+                <span class="badge bg-danger me-1">Urgente</span>
+                <span class="badge bg-secondary">Beta</span>
+              </div>
+
+              <div class="position-relative">
+                <button class="btn btn-sm btn-light copy-btn" data-copy-target="#code-badges"><i class="bi bi-clipboard"></i> Copiar</button>
+                <pre id="code-badges" class="code-sample"><code>&lt;span class="badge bg-primary"&gt;Novo&lt;/span&gt;
+&lt;span class="badge bg-success"&gt;Online&lt;/span&gt;
+&lt;span class="badge bg-danger"&gt;Urgente&lt;/span&gt;
+</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row: Alerts e Badges de componente -->
+      <div class="row g-3 mb-3">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Alerts (Mensagens)</h5>
+              <p class="card-text">Exibem avisos. Podem ser dismissíveis com o atributo <code>data-bs-dismiss="alert"</code>.</p>
+              <div class="mb-3">
+                <div class="alert alert-warning" role="alert">Atenção: este é um alerta de exemplo.</div>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                  Sucesso! Operação realizada.
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+                </div>
+              </div>
+
+              <div class="position-relative">
+                <button class="btn btn-sm btn-light copy-btn" data-copy-target="#code-alerts"><i class="bi bi-clipboard"></i> Copiar</button>
+                <pre id="code-alerts" class="code-sample"><code>&lt;div class="alert alert-warning" role="alert"&gt;Aviso&lt;/div&gt;
+&lt;div class="alert alert-success alert-dismissible fade show" role="alert"&gt;
+  Sucesso! &lt;button class="btn-close" data-bs-dismiss="alert"&gt;&lt;/button&gt;
+&lt;/div&gt;
+</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Cards (Cartões)</h5>
+              <p class="card-text">Componentes de conteúdo: imagem, título, texto e ações.</p>
+
+              <div class="row g-2">
+                <div class="col-6">
+                  <div class="card">
+                    <img src="https://via.placeholder.com/400x150" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h6 class="card-title">Card exemplo</h6>
+                      <p class="card-text small text-muted">Pequena descrição.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="card p-2">
+                    <div class="card-body">
+                      <h6 class="card-title">Card sem imagem</h6>
+                      <p class="card-text small">Bom para notas rápidas.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="position-relative mt-2">
+                <button class="btn btn-sm btn-light copy-btn" data-copy-target="#code-cards"><i class="bi bi-clipboard"></i> Copiar</button>
+                <pre id="code-cards" class="code-sample"><code>&lt;div class="card" style="width: 18rem;"&gt;
+  &lt;img src="..." class="card-img-top" alt="..."&gt;
+  &lt;div class="card-body"&gt;
+    &lt;h5 class="card-title"&gt;Título&lt;/h5&gt;
+    &lt;p class="card-text"&gt;Texto...&lt;/p&gt;
+    &lt;a href="#" class="btn btn-primary"&gt;Ação&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row: Grid e Layout -->
+      <div class="row g-3 mb-3">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Sistema de Grid (12 colunas)</h5>
+              <p class="card-text">O grid do Bootstrap usa <code>.container</code> / <code>.row</code> / <code>.col-*</code>. As colunas somam até 12.</p>
+
+              <!-- Demo visual do grid -->
+              <div class="mb-3">
+                <div class="row">
+                  <div class="col-4"><div class="p-2 border rounded text-center small">col-4</div></div>
+                  <div class="col-4"><div class="p-2 border rounded text-center small">col-4</div></div>
+                  <div class="col-4"><div class="p-2 border rounded text-center small">col-4</div></div>
+                </div>
+              </div>
+
+              <div class="position-relative">
+                <button class="btn btn-sm btn-light copy-btn" data-copy-target="#code-grid"><i class="bi bi-clipboard"></i> Copiar</button>
+                <pre id="code-grid" class="code-sample"><code>&lt;div class="container"&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="col-4"&gt;col-4&lt;/div&gt;
+    &lt;div class="col-4"&gt;col-4&lt;/div&gt;
+    &lt;div class="col-4"&gt;col-4&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row: Formulário e Inputs -->
+      <div class="row g-3 mb-3">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Formulário básico</h5>
+              <p class="card-text">Use classes como <code>form-control</code>, <code>form-select</code>, <code>form-check</code> para inputs estilizados.</p>
+
+              <form class="mb-2">
+                <div class="mb-2">
+                  <label class="form-label">Nome</label>
+                  <input type="text" class="form-control" placeholder="Seu nome">
+                </div>
+                <div class="mb-2">
+                  <label class="form-label">Categoria</label>
+                  <select class="form-select">
+                    <option>Frontend</option>
+                    <option>Backend</option>
+                    <option>DevOps</option>
+                  </select>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="checkbox" id="check1">
+                  <label class="form-check-label" for="check1">Lembrar</label>
+                </div>
+                <button class="btn btn-primary">Enviar</button>
+              </form>
+
+              <div class="position-relative">
+                <button class="btn btn-sm btn-light copy-btn" data-copy-target="#code-form"><i class="bi bi-clipboard"></i> Copiar</button>
+                <pre id="code-form" class="code-sample"><code>&lt;label class="form-label"&gt;Nome&lt;/label&gt;
+&lt;input class="form-control" type="text"&gt;
+&lt;select class="form-select"&gt;...&lt;/select&gt;
+</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Accordion (colapsáveis)</h5>
+              <p class="card-text">Ótimo para FAQs e seções que ocupam espaço. Usa <code>accordion</code> com IDs únicos.</p>
+
+              <div class="accordion" id="exAccordion">
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">Pergunta 1</button>
+                  </h2>
+                  <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#exAccordion">
+                    <div class="accordion-body">Resposta da pergunta 1.</div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">Pergunta 2</button>
+                  </h2>
+                  <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#exAccordion">
+                    <div class="accordion-body">Resposta da pergunta 2.</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="position-relative mt-2">
+                <button class="btn btn-sm btn-light copy-btn" data-copy-target="#code-accordion"><i class="bi bi-clipboard"></i> Copiar</button>
+                <pre id="code-accordion" class="code-sample"><code>&lt;div class="accordion" id="meuAccordion"&gt;...&lt;/div&gt;
+</code></pre>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row: Tabela e Lista -->
+      <div class="row g-3 mb-3">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Tabela responsiva</h5>
+              <p class="card-text">Use <code>table</code> e envolva em <code>.table-responsive</code> para rolagem em telas pequenas.</p>
+
+              <div class="table-responsive mb-2">
+                <table class="table table-sm table-striped">
+                  <thead>
+                    <tr><th>#</th><th>Nome</th><th>Função</th><th>Status</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>1</td><td>Hall</td><td>Dev</td><td><span class="badge bg-success">Ativo</span></td></tr>
+                    <tr><td>2</td><td>Maria</td><td>QA</td><td><span class="badge bg-secondary">Inativo</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="position-relative">
+                <button class="btn btn-sm btn-light copy-btn" data-copy-target="#code-table"><i class="bi bi-clipboard"></i> Copiar</button>
+                <pre id="code-table" class="code-sample"><code>&lt;div class="table-responsive"&gt;
+  &lt;table class="table table-striped"&gt;...&lt;/table&gt;
+&lt;/div&gt;
+</code></pre>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Lista (List group)</h5>
+              <p class="card-text">Listas estilizadas com <code>list-group</code> e itens ativos/links.</p>
+
+              <ul class="list-group mb-2">
+                <li class="list-group-item">Item 1</li>
+                <li class="list-group-item active">Item ativo</li>
+                <li class="list-group-item">Item 3</li>
+              </ul>
+
+              <div class="position-relative">
+                <button class="btn btn-sm btn-light copy-btn" data-copy-target="#code-list"><i class="bi bi-clipboard"></i> Copiar</button>
+                <pre id="code-list" class="code-sample"><code>&lt;ul class="list-group"&gt;
+  &lt;li class="list-group-item"&gt;Item&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ===== SEÇÃO: Caderno Interativo (NOTAS) ===== -->
+    <section class="mb-4">
+      <h2 class="h5 mb-3">Caderno Interativo — Notas (exemplos preenchidos)</h2>
+
+      <div class="card mb-3">
+        <div class="card-body">
+          <div class="d-flex gap-2 mb-3">
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#noteModal">+ Nova Nota</button>
+            <input id="searchInput" class="form-control form-control-sm" placeholder="Pesquisar notas..." style="max-width:320px">
+            <button id="clearNotes" class="btn btn-outline-danger btn-sm ms-auto">Limpar todas</button>
+          </div>
+
+          <!-- area onde as notas serão renderizadas -->
+          <div id="notesArea" class="row g-3"></div>
+
+          <small class="text-muted">As notas são salvas no armazenamento local do seu navegador (localStorage).</small>
+        </div>
+      </div>
+
+      <!-- Modal para criar/editar nota -->
+      <div class="modal fade" id="noteModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <form id="noteForm">
+              <div class="modal-header">
+                <h5 class="modal-title">Nova nota</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+              </div>
+              <div class="modal-body">
+                <input type="hidden" id="noteId">
+                <div class="mb-2">
+                  <label class="form-label">Título</label>
+                  <input id="noteTitle" class="form-control" required>
+                </div>
+                <div class="mb-2">
+                  <label class="form-label">Conteúdo</label>
+                  <textarea id="noteContent" class="form-control" rows="4" required></textarea>
+                </div>
+                <div class="mb-2">
+                  <label class="form-label">Tags (vírgula)</label>
+                  <input id="noteTags" class="form-control">
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ===== SEÇÃO: Utilitários rápidos (texto, espaçamento) ===== -->
+    <section class="mb-4">
+      <h2 class="h5 mb-3">Utilitários & Dicas Rápidas</h2>
+      <div class="row g-3">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <h6>Espaçamento (margem / padding)</h6>
+              <p class="small text-muted mb-2">Classes: <code>m-*</code> / <code>p-*</code> com valores de 0 a 5 (ex.: <code>mb-3</code>, <code>px-2</code>).</p>
+              <div class="d-flex gap-2">
+                <div class="p-2 border rounded m-1">Exemplo p-2</div>
+                <div class="p-3 border rounded m-1">Exemplo p-3</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <h6>Texto e alinhamento</h6>
+              <p class="small text-muted mb-2">Ex.: <code>text-center</code>, <code>fw-bold</code>, <code>text-truncate</code>.</p>
+              <p class="text-truncate" style="max-width:300px">Exemplo de texto muito longo que será truncado com reticências se ultrapassar o container.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Rodapé dentro do caderno ===== -->
+    <footer class="mt-4 text-muted small">
+      <div class="d-flex justify-content-between">
+        <div>Feito com Bootstrap — arquivo de exemplo para estudos.</div>
+        <div>Versão: demo • <span id="noteCount">0</span> notas</div>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- ===== Toast (exemplo) ===== -->
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+    <div id="liveToast" class="toast align-items-center text-bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">Bem-vindo ao Caderno Bootstrap! Teste as ferramentas.</div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Scripts: Bootstrap + lógica do caderno ===== -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    /*
+      CADERNO JS
+      - logica de notas (localStorage)
+      - copiar blocos de código
+      - inicializar tooltips e toasts
+      - tema simples dark toggle
+
+      Todo o código abaixo está comentado em pt-BR para facilitar o estudo.
+    */
+
+    // ---------- Inicializações Bootstrap (tooltips, popovers) ----------
+    document.addEventListener('DOMContentLoaded', function () {
+      // tooltips
+      var tList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+      tList.forEach(function (t) { new bootstrap.Tooltip(t); });
+
+      // mostra o toast de boas-vindas quando o usuário abrir a página
+      var toastEl = document.getElementById('liveToast');
+      if (toastEl) {
+        var toast = new bootstrap.Toast(toastEl, { delay: 3000 });
+        // não mostrar sempre: só a primeira visita (opcional)
+        if (!localStorage.getItem('caderno_visitado')) {
+          toast.show();
+          localStorage.setItem('caderno_visitado', '1');
+        }
+      }
+
+      // copiar blocos de código
+      document.querySelectorAll('.copy-btn').forEach(function(btn){
+        btn.addEventListener('click', function(){
+          var target = document.querySelector(btn.getAttribute('data-copy-target'));
+          if (!target) return;
+          var text = target.innerText;
+          navigator.clipboard.writeText(text).then(function(){
+            // feedback visual simples
+            btn.innerHTML = '<i class="bi bi-check2"></i> Copiado';
+            setTimeout(function(){ btn.innerHTML = '<i class="bi bi-clipboard"></i> Copiar'; }, 1500);
+          });
+        });
+      });
+
+      // theme toggle (simples, apenas altera classes customizadas)
+      var themeToggle = document.getElementById('themeToggle');
+      themeToggle.addEventListener('click', function(){
+        document.body.classList.toggle('bg-dark');
+        document.body.classList.toggle('text-light');
+        // troca aparência do caderno
+        document.querySelector('.notebook').classList.toggle('bg-dark');
+        document.querySelector('.notebook').classList.toggle('text-light');
+      });
+
+      // botão mostra toast manual
+      var showToastBtn = document.getElementById('showToastBtn');
+      showToastBtn.addEventListener('click', function(){
+        if (toastEl) new bootstrap.Toast(toastEl).show();
+      });
+
+      // inicializa o caderno (notas)
+      Caderno.init();
+    });
+
+
+    // ---------- LÓGICA DO CADERNO (notas) ----------
+    var Caderno = (function(){
+      var STORAGE_KEY = 'caderno_notas_v1';
+
+      // notas de exemplo já preenchidas para você estudar
+      var exemplos = [
+        {
+          id: generateId(),
+          title: 'Anotações de Bootstrap',
+          content: 'Grid, Cards, Forms, Buttons — exemplos já prontos neste caderno. Use o botão "Copiar" ao lado dos blocos de código para reproduzir no seu projeto.',
+          tags: ['bootstrap','exemplo'],
+          createdAt: Date.now()
+        },
+        {
+          id: generateId(),
+          title: 'To-dos para estudar',
+          content: '1) Revisar classes utilitárias (margem, padding)\n2) Praticar grid e responsividade\n3) Fazer um projeto com cards e formulário',
+          tags: ['estudo','tarefas'],
+          createdAt: Date.now()
+        },
+        {
+          id: generateId(),
+          title: 'Dica rápida',
+          content: 'Use o devtools para inspecionar as classes aplicadas pelo Bootstrap e testar alterações ao vivo.',
+          tags: ['dica'],
+          createdAt: Date.now()
+        }
+      ];
+
+      // cria um ID simples
+      function generateId(){ return 'n_' + Math.random().toString(36).slice(2,9); }
+
+      // recupera notas do localStorage (ou usa os exemplos se vazio)
+      function loadNotes(){
+        var raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) {
+          // salva os exemplos e retorna
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(exemplos));
+          return exemplos.slice();
+        }
+        try { return JSON.parse(raw); } catch(e) { return []; }
+      }
+
+      // salva array de notas
+      function saveNotes(notes){ localStorage.setItem(STORAGE_KEY, JSON.stringify(notes)); }
+
+      // renderiza as notas na página
+      function renderNotes(filterText){
+        var area = document.getElementById('notesArea');
+        var notes = loadNotes();
+        var countSpan = document.getElementById('noteCount');
+
+        // aplica filtro simples por título/conteúdo/tags
+        if (filterText && filterText.trim() !== ''){
+          var q = filterText.toLowerCase();
+          notes = notes.filter(function(n){
+            return n.title.toLowerCase().includes(q) || n.content.toLowerCase().includes(q) || (n.tags||[]).join(',').toLowerCase().includes(q);
+          });
+        }
+
+        area.innerHTML = '';
+        if (notes.length === 0) {
+          area.innerHTML = '<div class="col-12"><div class="alert alert-info">Nenhuma nota encontrada.</div></div>';
+        } else {
+          notes.forEach(function(n){
+            var col = document.createElement('div'); col.className = 'col-md-4';
+            var card = document.createElement('div'); card.className = 'card h-100';
+            var cardBody = document.createElement('div'); cardBody.className = 'card-body d-flex flex-column';
+
+            var title = document.createElement('h6'); title.className = 'card-title'; title.innerText = n.title;
+            var content = document.createElement('p'); content.className = 'card-text small text-muted flex-grow-1';
+            // mantemos quebras de linha
+            content.innerHTML = n.content.replace(/\n/g, '<br>');
+
+            var tagDiv = document.createElement('div'); tagDiv.className = 'mb-2';
+            (n.tags||[]).slice(0,3).forEach(function(t){
+              var s = document.createElement('span'); s.className = 'badge bg-secondary me-1 small'; s.innerText = t; tagDiv.appendChild(s);
+            });
+
+            var footer = document.createElement('div'); footer.className = 'mt-2 d-flex gap-2';
+            var btnEdit = document.createElement('button'); btnEdit.className = 'btn btn-sm btn-outline-primary'; btnEdit.innerHTML = '<i class="bi bi-pencil"></i> Editar';
+            btnEdit.addEventListener('click', function(){ openEditModal(n.id); });
+            var btnDelete = document.createElement('button'); btnDelete.className = 'btn btn-sm btn-outline-danger'; btnDelete.innerHTML = '<i class="bi bi-trash"></i> Excluir';
+            btnDelete.addEventListener('click', function(){ deleteNote(n.id); });
+
+            footer.appendChild(btnEdit); footer.appendChild(btnDelete);
+
+            cardBody.appendChild(title); cardBody.appendChild(tagDiv); cardBody.appendChild(content); cardBody.appendChild(footer);
+            card.appendChild(cardBody); col.appendChild(card); area.appendChild(col);
+          });
+        }
+
+        // atualiza contador
+        var total = (localStorage.getItem(STORAGE_KEY) ? JSON.parse(localStorage.getItem(STORAGE_KEY)).length : 0);
+        if (countSpan) countSpan.innerText = total;
+      }
+
+      // abrir modal para editar (preenche campos)
+      function openEditModal(id){
+        var notes = loadNotes();
+        var n = notes.find(function(x){ return x.id === id; });
+        if (!n) return;
+        document.getElementById('noteId').value = n.id;
+        document.getElementById('noteTitle').value = n.title;
+        document.getElementById('noteContent').value = n.content;
+        document.getElementById('noteTags').value = (n.tags||[]).join(',');
+        var modal = new bootstrap.Modal(document.getElementById('noteModal'));
+        modal.show();
+      }
+
+      // adicionar/atualizar nota via form
+      function upsertNote(data){
+        var notes = loadNotes();
+        var idx = notes.findIndex(function(x){ return x.id === data.id; });
+        if (idx === -1) { notes.unshift(data); } else { notes[idx] = data; }
+        saveNotes(notes);
+        renderNotes(document.getElementById('searchInput').value);
+      }
+
+      // excluir nota
+      function deleteNote(id){
+        if (!confirm('Excluir esta nota?')) return;
+        var notes = loadNotes().filter(function(x){ return x.id !== id; });
+        saveNotes(notes); renderNotes(document.getElementById('searchInput').value);
+      }
+
+      // limpar todas notas
+      function clearAll(){ if (!confirm('Limpar todas as notas?')) return; localStorage.removeItem(STORAGE_KEY); renderNotes(''); }
+
+      // init: lida com eventos do form e busca
+      function init(){
+        // render inicial
+        renderNotes('');
+
+        // form submit: criar/editar
+        document.getElementById('noteForm').addEventListener('submit', function(e){
+          e.preventDefault();
+          var id = document.getElementById('noteId').value || generateId();
+          var title = document.getElementById('noteTitle').value.trim();
+          var content = document.getElementById('noteContent').value.trim();
+          var tags = document.getElementById('noteTags').value.split(',').map(function(t){ return t.trim(); }).filter(Boolean);
+          var data = { id: id, title: title, content: content, tags: tags, createdAt: Date.now() };
+          upsertNote(data);
+          // fecha modal
+          var modalEl = document.getElementById('noteModal');
+          bootstrap.Modal.getInstance(modalEl).hide();
+          // limpa campos
+          document.getElementById('noteForm').reset();
+          document.getElementById('noteId').value = '';
+        });
+
+        // busca
+        document.getElementById('searchInput').addEventListener('input', function(e){ renderNotes(e.target.value); });
+
+        // clear all
+        document.getElementById('clearNotes').addEventListener('click', function(){ clearAll(); });
+      }
+
+      return { init: init };
+    })();
+
+  </script>
+</body>
+</html>
