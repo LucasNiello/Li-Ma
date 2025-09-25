@@ -1,58 +1,182 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-  </head>
-  <body>
-    <h1>Hello, world!</h1>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tecnologia Sustentável</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="navbar navbar-dark bg-success sticky-top shadow">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold" href="#">🌱 Tecnologia Sustentável</a>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search">
+        <button class="btn btn-outline-light" type="submit">Buscar</button>
+      </form>
+    </div>
+  </header>
 
-<!-- On tables -->
-<table class="table-primary">...</table>
-<table class="table-secondary">...</table>
-<table class="table-success">...</table>
-<table class="table-danger">...</table>
-<table class="table-warning">...</table>
-<table class="table-info">...</table>
-<table class="table-light">...</table>
-<table class="table-dark">...</table>
+  <div class="container-fluid">
+    <div class="row">
+      <!-- SIDEBAR -->
+      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+        <div class="position-sticky pt-3">
+          <ul class="nav flex-column">
+            <li class="nav-item"><a class="nav-link active" href="#">Início</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Energia Solar</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Mobilidade Elétrica</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Reciclagem</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Novas Tecnologias</a></li>
+          </ul>
+        </div>
+      </nav>
 
-<!-- On rows -->
-<tr class="table-primary">...</tr>
-<tr class="table-secondary">...</tr>
-<tr class="table-success">...</tr>
-<tr class="table-danger">...</tr>
-<tr class="table-warning">...</tr>
-<tr class="table-info">...</tr>
-<tr class="table-light">...</tr>
-<tr class="table-dark">...</tr>
+      <!-- CONTEÚDO PRINCIPAL -->
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <h1 class="h2">Bem-vindo ao Futuro Sustentável</h1>
+        </div>
 
-<!-- On cells (`td` or `th`) -->
-<tr>
-  <td class="table-primary">...</td>
-  <td class="table-secondary">...</td>
-  <td class="table-success">...</td>
-  <td class="table-danger">...</td>
-  <td class="table-warning">...</td>
-  <td class="table-info">...</td>
-  <td class="table-light">...</td>
-  <td class="table-dark">...</td>
-</tr>
+        <!-- IMAGEM DE DESTAQUE -->
+        <div class="card mb-4 shadow-sm">
+          <img src="https://images.unsplash.com/photo-1509395062183-67c5ad6faff9?auto=format&fit=crop&w=1200&q=80" 
+               class="card-img-top" alt="Energia Sustentável">
+          <div class="card-body">
+            <p class="card-text">
+              A tecnologia sustentável busca soluções que respeitem o meio ambiente e promovam qualidade de vida.
+              Da energia limpa ao transporte elétrico, o futuro está sendo construído com inovação verde.
+            </p>
+          </div>
+        </div>
 
-<button type="button" class="btn btn-primary">Primary</button>
-<button type="button" class="btn btn-secondary">Secondary</button>
-<button type="button" class="btn btn-success">Success</button>
-<button type="button" class="btn btn-danger">Danger</button>
-<button type="button" class="btn btn-warning">Warning</button>
-<button type="button" class="btn btn-info">Info</button>
-<button type="button" class="btn btn-light">Light</button>
-<button type="button" class="btn btn-dark">Dark</button>
+        <!-- SEÇÕES DE CONTEÚDO -->
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card mb-4 shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title">Energia Solar</h5>
+                <p class="card-text">Placas solares estão se tornando mais acessíveis, permitindo gerar energia limpa em casas e empresas.</p>
+                <a href="#" class="btn btn-success">Saiba mais</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-6">
+            <div class="card mb-4 shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title">Mobilidade Elétrica</h5>
+                <p class="card-text">Carros, motos e bicicletas elétricas ajudam a reduzir a poluição e a dependência de combustíveis fósseis.</p>
+                <a href="#" class="btn btn-success">Saiba mais</a>
+              </div>
+            </div>
+          </div>
+        </div><!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Direito Armamentista</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="navbar navbar-dark bg-dark sticky-top shadow">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold" href="#">⚖️ Direito Armamentista</a>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search">
+        <button class="btn btn-outline-light" type="submit">Buscar</button>
+      </form>
+    </div>
+  </header>
 
-<button type="button" class="btn btn-link">Link</button>
+  <div class="container-fluid">
+    <div class="row">
+      <!-- SIDEBAR -->
+      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+        <div class="position-sticky pt-3">
+          <ul class="nav flex-column">
+            <li class="nav-item"><a class="nav-link active" href="#">Início</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Legislação</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Histórico</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Debates Públicos</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Direitos Individuais</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Segurança Coletiva</a></li>
+          </ul>
+        </div>
+      </nav>
 
+      <!-- CONTEÚDO PRINCIPAL -->
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <h1 class="h2">O Debate sobre o Direito Armamentista</h1>
+        </div>
 
-  </body>
+        <!-- IMAGEM DE DESTAQUE -->
+        <div class="card mb-4 shadow-sm">
+          <img src="https://images.unsplash.com/photo-1618588507085-fb11f77a92c1?auto=format&fit=crop&w=1200&q=80" 
+               class="card-img-top" alt="Direito Armamentista">
+          <div class="card-body">
+            <p class="card-text">
+              O direito armamentista é um dos temas mais debatidos no campo jurídico e político. Ele envolve questões 
+              constitucionais, segurança pública e liberdades individuais. O equilíbrio entre a posse de armas e a 
+              proteção da sociedade é um desafio constante.
+            </p>
+          </div>
+        </div>
+
+        <!-- SEÇÕES DE CONTEÚDO -->
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card mb-4 shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title">Aspectos Legais</h5>
+                <p class="card-text">
+                  A legislação armamentista varia de país para país. Alguns garantem o porte como direito fundamental, 
+                  enquanto outros impõem restrições rigorosas.
+                </p>
+                <a href="#" class="btn btn-dark">Saiba mais</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-6">
+            <div class="card mb-4 shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title">Debates na Sociedade</h5>
+                <p class="card-text">
+                  O debate envolve a busca por equilíbrio entre direitos individuais e segurança coletiva, 
+                  com diferentes perspectivas culturais e políticas.
+                </p>
+                <a href="#" class="btn btn-dark">Saiba mais</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-dark text-light text-center py-3 mt-4">
+    <p class="mb-0">© 2025 Direito Armamentista - Conteúdo educativo</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-success text-light text-center py-3 mt-4">
+    <p class="mb-0">© 2025 Tecnologia Sustentável - Todos os direitos reservados</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
