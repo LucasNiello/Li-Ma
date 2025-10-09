@@ -48,31 +48,20 @@
                 </div>
                 <div class="sidebar-item px-6 py-3 cursor-pointer flex items-center space-x-3" onclick="setActiveMenu(this, 'agenda')">
                     <i class="fas fa-calendar text-lg w-5"></i>
-                    <span class="font-medium">Agenda</span>
+                    <span class="font-medium">Calendário</span>
                 </div>
                 <div class="sidebar-item px-6 py-3 cursor-pointer flex items-center space-x-3" onclick="setActiveMenu(this, 'perfil')">
                     <i class="fas fa-user text-lg w-5"></i>
                     <span class="font-medium">Perfil</span>
                 </div>
             </nav>
-            
-            <!-- User Profile -->
-            <!-- <div class="absolute bottom-0 left-0 right-0 p-6 border-t border-gray-700"> -->
-                <!-- <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 bg-gradient-to-br from-red-600 to-red-800 rounded-full flex items-center justify-center">
-                        <i class="fas fa-user text-white"></i>
-                    </div>
-                    <div>
-                        <p class="font-medium">João Silva</p>
-                        <p class="text-sm text-gray-400">Membro Premium</p>
-                    </div>
-                </div> -->
-            <!-- </div> -->
         </div>
 
         <!-- Main Content -->
         <div class="ml-64 min-h-screen">
-            <!-- Header -->
+        <!-- =================================
+                HEADER
+             ================================== -->
             <header class="bg-gray-800 shadow-lg p-6 border-b border-gray-700">
                 <div class="flex justify-between items-center">
                     <div>
@@ -86,38 +75,42 @@
                         <span class="absolute -top-2 -right-2 bg-red-600 text-xs text-white rounded-full w-5 h-5 flex items-center justify-center">3</span>
                     </div>
 
-                    <!-- =================================
+                        <!-- =================================
                          PERFIL DO USUÁRIO
                          ================================== -->
+                            <!-- Perfil no Header com Dropdown -->
+                            <div class="relative">
+                            <!-- Botão (avatar + nome) -->
+                            <button id="profile-btn" class="flex items-center space-x-3 focus:outline-none">
+                                <div class="w-10 h-10 bg-gradient-to-br from-red-600 to-red-800 rounded-full flex items-center justify-center">
+                                <i class="fas fa-user text-white"></i>
+                                </div>
+                                <div class="text-left">
+                                <p class="font-medium">João Silva</p>
+                                <p class="text-sm text-gray-400">Membro Premium</p>
+                                </div>
+                                <i class="fas fa-chevron-down text-gray-400 ml-2"></i>
+                            </button>
 
-                    <div class="flex items-center space-x-3">
-                        <!-- Avatar -->
-                        <div class="w-10 h-10 bg-gradient-to-br from-red-600 to-red-800 rounded-full flex items-center justify-center">
-                            <i class="fas fa-user text-white"></i>
+                            <!-- Dropdown -->
+                            <div id="profile-menu" 
+                                class="hidden absolute right-0 mt-2 w-48 bg-gray-800 rounded-lg shadow-lg border border-gray-700 z-50">
+                                <a href="#" class="block px-4 py-2 hover:bg-gray-700">Meu Perfil</a>
+                                <a href="#" class="block px-4 py-2 hover:bg-gray-700">Configurações</a>
+                                <a href="#" class="block px-4 py-2 hover:bg-gray-700 text-red-400">Sair</a>
+                            </div>
                         </div>
+
+                    <!-- <div class="flex items-center space-x-3"> -->
+                        <!-- Avatar -->
+                        <!-- <div class="w-10 h-10 bg-gradient-to-br from-red-600 to-red-800 rounded-full flex items-center justify-center">
+                            <i class="fas fa-user text-white"></i>
+                        </div> -->
                         <!-- Nome + Status -->
-                        <div>
+                        <!-- <div>
                             <p class="font-medium">João Silva</p>
                             <p class="text-sm text-gray-400">Membro Premium</p>
                         </div>
-                    </div>
-
-
-                    <!-- <div class="relative">
-                        <img src="https://via.placeholder.com/40" 
-                                alt="Usuário" 
-                                class="w-10 h-10 rounded-full cursor-pointer border-2 border-gray-300 hover:border-blue-500 transition">
-                    </div>
-                    </div> -->
-
-                    <!-- <div class="flex items-center space-x-4">
-                        <div class="relative">
-                            <i class="fas fa-bell text-xl text-gray-400 cursor-pointer hover:text-red-500 transition-colors"></i>
-                            <span class="absolute -top-2 -right-2 bg-red-600 text-xs rounded-full w-5 h-5 flex items-center justify-center">3</span>
-                        </div>
-                        <button class="action-btn px-4 py-2 rounded-lg text-white font-medium">
-                            <i class="fas fa-plus mr-2"></i>Novo Agendamento
-                        </button>
                     </div> -->
                 </div>
             </header>

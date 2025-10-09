@@ -47,6 +47,27 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
+//=======================
+//MENU DROPDOWN DO PERFIL
+//=======================
+document.addEventListener("DOMContentLoaded", () => {
+  const btn = document.getElementById("profile-btn");
+  const menu = document.getElementById("profile-menu");
+
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    menu.classList.toggle("hidden");
+  });
+
+  // Fecha o menu se clicar fora
+  document.addEventListener("click", () => {
+    if (!menu.classList.contains("hidden")) {
+      menu.classList.add("hidden");
+    }
+  });
+});
+
+
 // ----------------------
 // CALENDÁRIO
 // ----------------------
