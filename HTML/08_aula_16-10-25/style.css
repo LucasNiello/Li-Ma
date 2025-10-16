@@ -1,0 +1,24 @@
+:root {
+    --cor0: red;
+    --cor1: blue;
+    --fonte0: Arial;
+}
+
+body {
+    font-family: var(--fonte0);
+    color: var(--cor0);
+    line-height: 1.5em;
+    font-family: var();
+}
+
+h1 {
+    text-shadow: 2px 2px 0px rgba(0, 0n, 0, 0.466);
+}
+
+div.video > frame {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+}
